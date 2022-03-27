@@ -7,8 +7,15 @@ import NewspaperSharpIcon from "@mui/icons-material/NewspaperSharp";
 import PhotoSharpIcon from "@mui/icons-material/PhotoSharp";
 import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 import FmdGoodSharpIcon from "@mui/icons-material/FmdGoodSharp";
+import UseGoogleSearch from "../useGoogleSearch";
+import { useSelector } from "react-redux";
 
 const SearchPage = () => {
+  const term = useSelector((state) => state.term);
+  const { data } = UseGoogleSearch(term);
+  console.log("This is the data" + data);
+  console.log("This is term " + term);
+
   return (
     <>
       <div className="searchpage">
@@ -58,19 +65,45 @@ const SearchPage = () => {
             </div>
           </div>
         </div>
-        <div className="searchpage-results">
-          <p className="searchpage-resultcount"></p>
-          <div className="result">
-            <a href="">
-              <img src="" alt="" className="searchpage-resultimg" />
-              link.com
-            </a>
-            <a href="" className="searchpage-resulttitle">
-              <h2>Title</h2>
-            </a>
-            <p className="searchpage-resultdescription">description</p>
+
+        {/* {term && (
+          <div className="searchPage_results">
+            <p className="searchPage_resultCount">
+              About {data?.searchInformation.formattedTotalResults} results (
+              {data?.searchInformation.formattedSearchTime} seconds) for {term}
+            </p> */}
+
+        {/* {data?.items.map((item) => (
+              <div className="searchPage_result"> */}
+        {/* eslint-disable-next-line react/jsx-no-target-blank */}
+        {/* <a href={item.link} target="_blank">
+                  {item.pagemap?.cse_image?.length > 0 &&
+                    item.pagemap?.cse_image[0]?.src && (
+                      <img
+                        className="searchPage_resultImage"
+                        src={
+                          item.pagemap?.cse_image?.length > 0 &&
+                          item.pagemap?.cse_image[0]?.src
+                        }
+                        alt=""
+                      /> */}
+        {/* )}
+                  {item.displayLink} ✔
+                </a>
+               
+                <a
+                  className="searchPage_resultTitle"
+                  href={item.link}
+                  target="_blank"
+                > */}
+        {/* <h2>{item.title}</h2>
+                </a>
+                <p className="searchPage_resultSnippet">{item.snippet}</p>
+                <hr />
+              </div>
+            ))}
           </div>
-        </div>
+        )} */}
       </div>
     </>
   );

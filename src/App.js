@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
 import SearchPage from "./Pages/SearchPage";
+import Store from "./Redux/Store";
 
 function App() {
   return (
